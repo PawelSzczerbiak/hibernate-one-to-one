@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/edit book</title>
+</head>
+<body>
+<h2>Add/edit book:</h2>
+<form action="#" th:action="@{/books/add}" th:object="${book}" method="post">
+    <input type="text" th:field="*{id}" hidden/>
+    <input type="text" th:field="*{title}" th:placeholder="*{title} == null ? 'Title' : ''"/>
+    <select th:field="*{author}">
+        <option th:each="el : ${authors}" th:value="${el.id}" th:text="${el}"/>
+    </select>
+    <input type="submit"/>
+    <br/>
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</p>
+</form>
+</body>
+</html>

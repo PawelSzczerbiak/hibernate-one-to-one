@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+<h1>Authors:</h1>
+
+<p style="color:green;" th:text="${message}"/>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.name}"></td>
+        <td th:text="${author.surname}"></td>
+        <td><a th:href="@{'/authors/delete/'+${author.id}}">delete</a></td>
+        <td><a th:href="@{'/authors/edit/'+${author.id}}">edit</a></td>
+    </tr>
+</table>
+
+<p><a th:href="@{'/authors/add'}">Add author</a></p>
+
+</body>
+</html>

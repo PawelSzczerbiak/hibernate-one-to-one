@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/edit author</title>
+</head>
+<body>
+<h2>Add/edit author:</h2>
+<form action="#" th:action="@{/authors}" th:object="${author}" method="post">
+    <input type="text" th:field="*{id}" hidden/>
+    <input type="text" th:field="*{name}" th:placeholder="*{name} == null ? 'Name' : ''"/>
+    <input type="text" th:field="*{surname}" th:placeholder="*{surname} == null ? 'Surname' : ''"/>
+    <input type="submit"/>
+    <br/>
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+    <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname Error</p>
+</form>
+</body>
+</html>
